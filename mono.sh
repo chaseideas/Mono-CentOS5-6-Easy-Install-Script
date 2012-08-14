@@ -16,13 +16,13 @@ export LD_LIBRARY_PATH=$PREFIX/lib:$LD_LIBRARY_PATH
 echo "Updating OS ... Please wait ..."
 yum update -y
 
-echo "Installing some required packages"
+echo "Installing some required packages..."
 yum install -y make bzip2 automake gettext wget glibc-devel gcc-c++ gcc glib2-devel pkgconfig subversion bison gettext-libs autoconf httpd httpd-devel libtool libtiff-devel libexif-devel libexif libjpeg-devel gtk2-devel atk-devel pango-devel giflib-devel $
 
 mkdir -p $BUILDDIR
 
 echo
-echo "Downloading mono files"
+echo "Downloading mono files..."
 echo
 
 cd $BUILDDIR
@@ -36,7 +36,7 @@ make
 make install
 
 
-echo "Build mono..."
+echo "Building mono..."
 wget http://download.mono-project.com/sources/mono/mono-2.10.8.tar.bz2
 tar xjvf mono-2.10.8.tar.bz2
 cd mono-2.10.8
@@ -81,6 +81,8 @@ echo "Starting apache"
 
 
 echo "Apache restarted! Default mod_mono.conf has been added to the apache config file"
+echo "To activate the mono config, copy mod_mono.conf to the conf.d folder"
+echo "  with command 'cp /etc/httpd/conf/mod_mono.conf /etc/httpd/conf.d/'"
 echo "To further configure mod_mono please visit http://go-mono.com/config-mod-mono/"
 
 echo ""
