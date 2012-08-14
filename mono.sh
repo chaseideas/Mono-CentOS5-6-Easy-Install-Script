@@ -1,7 +1,7 @@
-#Easy Mono Install Script
-#    by Chase Ideas
+#   Easy Mono Install Script
+#       by Chase Ideas
 #
-#   www.chaseideas.com
+#     www.chaseideas.com
 #
 
 #!/bin/bash -e
@@ -70,11 +70,21 @@ make install
 
 echo "mod_mono installed successfully!"
 echo ""
-echo "Restarting apache (ignore errors if fails on 'service stop')"
-/sbin/service httpd restart
 
-echo "Apache restarted! Default mod_mono.conf has been added to the apache config file. To further configure mod_mono please visit http://go-mono.com/config-mod-mono/"
+echo "Time to restart apache for the new config"
+
+echo "Stopping apache (ignore errors if fails on 'service stop')"
+/sbin/service httpd stop
+
+echo "Starting apache"
+/sbin/service httpd start
+
+
+echo "Apache restarted! Default mod_mono.conf has been added to the apache config file"
+echo "To further configure mod_mono please visit http://go-mono.com/config-mod-mono/"
+
 echo ""
 PATH=$PATH:/opt/mono-2.10.8/bin
+
 echo "Mono path alias created, displaying version of installed mono"
 mono --version
