@@ -17,7 +17,7 @@ echo "Updating OS ... Please wait ..."
 yum update -y
 
 echo "Installing some required packages..."
-yum install -y make bzip2 automake gettext wget glibc-devel gcc-c++ gcc glib2-devel pkgconfig subversion bison gettext-libs autoconf httpd httpd-devel libtool libtiff-devel libexif-devel libexif libjpeg-devel gtk2-devel atk-devel pango-devel giflib-devel $
+yum install -y make bzip2 automake gettext wget glibc-devel gcc-c++ gcc glib2-devel pkgconfig subversion bison gettext-libs autoconf httpd httpd-devel php libtool libtiff-devel libexif-devel libexif libjpeg-devel gtk2-devel atk-devel pango-devel giflib-devel $
 
 mkdir -p $BUILDDIR
 
