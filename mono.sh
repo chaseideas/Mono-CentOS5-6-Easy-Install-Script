@@ -81,12 +81,24 @@ echo "Starting apache"
 
 
 echo "Apache restarted! Default mod_mono.conf has been added to the apache config file"
-echo "To activate the mono config, copy mod_mono.conf to the conf.d folder"
-echo "  with command 'cp /etc/httpd/conf/mod_mono.conf /etc/httpd/conf.d/'"
-echo "To further configure mod_mono please visit http://go-mono.com/config-mod-mono/"
+
+echo "Apache enabled at boot"
+chkconfig httpd on
+
+echo "Activating the mono config, and copying mod_mono.conf to the /etc/httpd/conf.d/ folder"
+cp /etc/httpd/conf/mod_mono.conf /etc/httpd/conf.d/
+
+echo "mod_mono enabled! To further configure mod_mono please visit http://go-mono.com/config-mod-mono/"
 
 echo ""
 PATH=$PATH:/opt/mono-2.10.8/bin
 
 echo "Mono path alias created, displaying version of installed mono"
 mono --version
+
+echo "Disabling SELinux so mod_mono is happy, anddddddd, you're all set"
+setenforce 0
+
+echo "It's recommended that you restart your machine after this, but it's probably not necessary... but hey, it's the windows way of doing things... plus with all the SELinux disabling, probably for the best until I revise this script. Otherwise...."
+
+echo "Install complete!! :)"
